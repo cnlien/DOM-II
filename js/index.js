@@ -33,6 +33,18 @@ window.addEventListener("load", function() {
 // RESIZE
 // * [ ] `scroll`
 // * [ ] `select`
-// * [ ] `dblclick`
+// * [x] `dblclick`
 
-//NEST TO SIMILAR EVENTS -- STOP PROPGATION -- PREVENT DEFAULT
+//NEST TO SIMILAR EVENTS -- STOP PROPGATION -- PREVENT DEFAULT -- FOCUS -- 
+const navLinks = document.querySelectorAll('a');
+navLinks.forEach(navItem => {
+  navItem.addEventListener("focus", (event) => {
+    event.stopPropagation();
+    navItem.style.color = "red";
+  });
+  navItem.addEventListener('dblclick', event => {
+    event.stopPropagation();
+    event.preventDefault();
+    navItem.style.textDecoration = "underline";
+  })
+});
