@@ -24,25 +24,34 @@ headerImage.addEventListener('drag', (event) => {
 
 // LOAD
 const navLogo = document.querySelector(".logo-heading");
-window.addEventListener("load", function() {
+window.addEventListener("load", (event) => {
   navLogo.style.color = "orange";
 });
+// SELECT
+navLogo.addEventListener ('select', (event) => {
+  navLogo.style.color = 'purple'
+})
 
-// FOCUS
 
 // RESIZE
-// * [ ] `scroll`
-// * [ ] `select`
-// * [x] `dblclick`
+const body = document.querySelector('body');
+window.addEventListener ('resize', (event) => {
+  body.style.background = 'green';
+})
+// SCROLL
+window.addEventListener ('scroll', (event) => {
+  body.style.background = 'purple';
+})
 
-//NEST TO SIMILAR EVENTS -- STOP PROPGATION -- PREVENT DEFAULT -- FOCUS -- 
+
+//NEST TO SIMILAR EVENTS -- STOP PROPGATION -- PREVENT DEFAULT -- FOCUS --
 const navLinks = document.querySelectorAll('a');
 navLinks.forEach(navItem => {
   navItem.addEventListener("focus", (event) => {
     event.stopPropagation();
     navItem.style.color = "red";
   });
-  navItem.addEventListener('dblclick', event => {
+  navItem.addEventListener('dblclick', (event) => {
     event.stopPropagation();
     event.preventDefault();
     navItem.style.textDecoration = "underline";
